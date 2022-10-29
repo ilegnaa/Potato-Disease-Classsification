@@ -68,3 +68,13 @@ a:hover,  a:active {
     color: black;
     text-align: center;
 }
+</style>
+<div class="footer">
+<p align="center"> <a href="https://www.linkedin.com/in/ronylpatil/">Developed with ❤ by ronil</a></p>
+</div>
+        """
+
+st.markdown(footer, unsafe_allow_html = True)
+
+if __name__ == '__main__' :
+    main()
