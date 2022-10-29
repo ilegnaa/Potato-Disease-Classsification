@@ -70,7 +70,7 @@ a:hover,  a:active {
 }
 </style>
 <div class="footer">
-<p align="center"> <a href="https://github.com/ilegnaa">Developed with care: by Evangeline_ilegnaa </a></p>
+<p align="center"> <a href="https://github.com/ilegnaa"> You can upload the images from the below link <a href="https://drive.google.com/drive/folders/1TD72lSxa5I38M9bhBDcv-s8gHLUC7_6i?usp=sharing"> Developed with 😇 by Evangeline </a></p>
 </div>
         """
 
