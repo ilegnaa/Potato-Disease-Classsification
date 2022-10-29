@@ -7,8 +7,8 @@ import tensorflow_hub as hub
 
 hide_streamlit_style = """
             <style>
-            MainMenu {visibility: hidden;}
-            header {visibility: hidden;}
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html = True)
@@ -45,7 +45,7 @@ def predict_class(image) :
     final_pred = class_name[np.argmax(prediction)]
     return final_pred, confidence
 
-header = """<style>
+footer = """<style>
 a:link , a:visited{
     color: black;
     background-color: transparent ;
@@ -58,7 +58,7 @@ a:hover,  a:active {
     text-decoration: none;
 }
 
-.header {
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -69,13 +69,13 @@ a:hover,  a:active {
 }
 </style>
 
-<div class="header">
+<div class="footer">
 <p align="center"> <a href="https://github.com/ilegnaa"> Developed with 😇 by Evangeline </a></p>
 <p align="center"> <a href="https://drive.google.com/drive/folders/1TD72lSxa5I38M9bhBDcv-s8gHLUC7_6i?usp=sharing"> You can downlod the images here </a></p>
 </div>
         """
 
-st.markdown(header, unsafe_allow_html = True)
+st.markdown(footer, unsafe_allow_html = True)
 
 if __name__ == '__main__' :
     main()
