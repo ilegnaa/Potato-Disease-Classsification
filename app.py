@@ -46,10 +46,10 @@ def predict_class(image) :
     final_pred = class_name[np.argmax(prediction)]
     return final_pred, confidence
 
-footer = """<style>
+header = """<style>
 a:link , a:visited{
-    color: black;
-    background-color: transparent;
+    color: white;
+    background-color: transparent ;
     text-decoration: None;
 }
 
@@ -76,7 +76,7 @@ a:hover,  a:active {
 </div>
         """
 
-st.markdown(footer, unsafe_allow_html = True)
+st.markdown(header, unsafe_allow_html = True)
 
 if __name__ == '__main__' :
     main()
