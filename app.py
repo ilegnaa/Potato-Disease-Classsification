@@ -1,4 +1,3 @@
-# For potato leaf disease prediction
 import streamlit as st
 from PIL import Image
 import numpy as np
@@ -9,12 +8,12 @@ import tensorflow_hub as hub
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
+            header {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html = True)
 
-st.title('Potato Plant Disease Prediction')
+st.title('POTATO PLANT DISEASE PREDICTION')
 
 def main() :
     file_uploaded = st.file_uploader('Choose an image...', type = 'jpg')
@@ -48,15 +47,15 @@ def predict_class(image) :
 
 header = """<style>
 a:link , a:visited{
-    color: white;
+    color: black;
     background-color: transparent ;
-    text-decoration: None;
+    text-decoration: overline;
 }
 
 a:hover,  a:active {
     color: red;
     background-color: transparent;
-    text-decoration: None;
+    text-decoration: overline;
 }
 
 .header {
