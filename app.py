@@ -7,7 +7,7 @@ import tensorflow_hub as hub
 
 hide_streamlit_style = """
             <style>
-            #MainMenu {visibility: hidden;}
+            MainMenu {visibility: hidden;}
             header {visibility: hidden;}
             </style>
             """
@@ -49,13 +49,13 @@ header = """<style>
 a:link , a:visited{
     color: black;
     background-color: transparent ;
-    text-decoration: overline;
+    text-decoration: none;
 }
 
 a:hover,  a:active {
     color: red;
     background-color: transparent;
-    text-decoration: overline;
+    text-decoration: none;
 }
 
 .header {
