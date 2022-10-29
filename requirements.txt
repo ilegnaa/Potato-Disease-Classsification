@@ -1,7 +1,6 @@
 streamlit
-numpy
-tensorflow
 pandas
+numpy
 matplotlib
 pandas
 datetime
