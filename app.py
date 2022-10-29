@@ -46,7 +46,7 @@ def predict_class(image) :
     final_pred = class_name[np.argmax(prediction)]
     return final_pred, confidence
 
-footer = """
+footer = """<style>
 a:link , a:visited{
     color: black;
     background-color: transparent;
@@ -69,6 +69,7 @@ a:hover,  a:active {
     text-align: center;
 }
 </style>
+
 <div class="footer">
 <p align="center"> <a href="https://github.com/ilegnaa"> Developed with 😇 by Evangeline </a></p>
 <p align="center"> <a href="https://drive.google.com/drive/folders/1TD72lSxa5I38M9bhBDcv-s8gHLUC7_6i?usp=sharing"> You can downlod the images here </a></p>
