@@ -71,7 +71,6 @@ a:hover,  a:active {
 
 <div class="footer">
 <p align="center"> <a href="https://github.com/ilegnaa"> Developed with care 😃 </a></p>
-<p align="center"> <a href="https://drive.google.com/drive/folders/1TD72lSxa5I38M9bhBDcv-s8gHLUC7_6i?usp=sharing"> You can downlod the images here </a></p>
 </div>
         """
 
