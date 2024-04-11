@@ -1,80 +1,44 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-import tensorflow.keras as keras
-import matplotlib.pyplot as plt
-import tensorflow_hub as hub
+import tensorflow as tf
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_predictions
+from tensorflow.keras.preprocessing import image
 
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html = True)
+# Load the pre-trained model
+model = tf.keras.models.load_model('path_to_your_model')
 
-st.title('POTATO PLANT DISEASE PREDICTION')
+# Define disease classes
+classes = ['Early Blight', 'Late Blight', 'Healthy']
 
-def main() :
-    file_uploaded = st.file_uploader('Choose an image...', type = 'jpg')
-    if file_uploaded is not None :
-        image = Image.open(file_uploaded)
-        st.write("Uploaded Image.")
-        figure = plt.figure()
-        plt.imshow(image)
-        plt.axis('off')
-        st.pyplot(figure)
-        result, confidence = predict_class(image)
-        st.write('Prediction : {}'.format(result))
-        st.write('Confidence : {}%'.format(confidence))
+def preprocess_img(img):
+    img = img.resize((224, 224))
+    img = image.img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    img = preprocess_input(img)
+    return img
 
-def predict_class(image) :
-    with st.spinner('Loading Model...'):
-        classifier_model = keras.models.load_model(r'potato_model.h5', compile = False)
+def classify_image(img):
+    img = preprocess_img(img)
+    prediction = model.predict(img)
+    return prediction
 
-    shape = ((256,256,3))
-    model = keras.Sequential([hub.KerasLayer(classifier_model, input_shape = shape)])     
-    test_image = image.resize((256, 256))
-    test_image = keras.preprocessing.image.img_to_array(test_image)
-    test_image /= 255.0
-    test_image = np.expand_dims(test_image, axis = 0)
-    class_name = ['Potato__Early_blight', 'Potato__Late_blight', 'Potato__healthy']
+def main():
+    st.title('Potato Leaf Disease Classifier')
+    st.write('Upload an image of a potato leaf and we will classify it.')
 
-    prediction = model.predict(test_image)
-    confidence = round(100 * (np.max(prediction[0])), 2)
-    final_pred = class_name[np.argmax(prediction)]
-    return final_pred, confidence
+    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
-footer = """<style>
-a:link , a:visited{
-    color: black;
-    background-color: transparent ;
-    text-decoration: none;
-}
+    if uploaded_file is not None:
+        # Display the image
+        img = Image.open(uploaded_file)
+        st.image(img, caption='Uploaded Image', use_column_width=True)
 
-a:hover,  a:active {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-}
+        # Make prediction
+        prediction = classify_image(img)
+        class_idx = np.argmax(prediction)
+        result = classes[class_idx]
+        st.write('Prediction:', result)
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: transparent;
-    color: black;
-    text-align: center;
-}
-</style>
-
-<div class="footer">
-<p align="center"> <a href="https://github.com/ilegnaa"> Developed with care 😃 </a></p>
-</div>
-        """
-
-st.markdown(footer, unsafe_allow_html = True)
-
-if __name__ == '__main__' :
+if __name__ == '__main__':
     main()
