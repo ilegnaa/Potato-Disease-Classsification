@@ -6,7 +6,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_
 from tensorflow.keras.preprocessing import image
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('path_to_your_model')
+model = tf.keras.models.load_model('final_model.h5')
 
 # Define disease classes
 classes = ['Early Blight', 'Late Blight', 'Healthy']
